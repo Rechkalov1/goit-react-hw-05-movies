@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchActor } from '';
-import { CastMoviesList } from './CastMoviesList/CastMoviesList';
+
 import { Loader } from 'shared/Loader/Loader';
+import CastMoviesList from './CastMoviesList/CastMoviesList';
+
 export default function CastMovies() {
   const [cast, setCast] = useState(null);
   const [error, setError] = useState(null);
