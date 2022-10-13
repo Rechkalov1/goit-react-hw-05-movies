@@ -1,4 +1,4 @@
-import NavbarMenu from 'components/NavbarMenu.jsx/NavbarMenu';
+import NavbarMenu from 'components/Navbar/NavbarMenu.jsx/NavbarMenu';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Header, Nav } from './NavBar.styled';
