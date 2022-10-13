@@ -1,25 +1,31 @@
 import { useState, useEffect } from 'react';
-import { Outlet, useLocation, useNavigate, useParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { fetchMoviesOne } from '../../components/fetch';
 import { Loader } from 'shared/Loader/Loader';
-import MovieComponents from './Moviecomponents/MovieComponents';
-export function MoviesDetails() {
+import MovieComponents from '../MoviesDetails/Moviecomponents/MovieComponents';
+import Search from 'components/Search/Search';
+
+export default function Movies() {
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const { id } = useParams();
-  const navigate = useNavigate();
-  const location = useLocation();
-  const from = location.state?.from ?? '/movies';
+  const [searchParams, setSearchParams] = useSearchParams();
+  const query = searchParams.get('query');
+
+  const OnChangeQuery = query => {
+    setSearchParams({ query: query });
+    setMovies({});
+  };
+
   useEffect(() => {
     const fetchMovie = async () => {
-      if (!id) {
+      if (!query) {
         return;
       }
       setLoading(true);
       try {
-        const data = await fetchMoviesOne({ id });
+        const data = await fetchMoviesOne({ query });
         setMovies(data);
       } catch (error) {
         setError(error);
@@ -28,19 +34,14 @@ export function MoviesDetails() {
       }
     };
     fetchMovie();
-  }, [id]);
-  const goBack = () => navigate(from);
+  }, [query]);
+
   return (
     <div>
-      {movies && (
-        <button type="button" onClick={goBack}>
-          Go Back
-        </button>
-      )}
+      <Search onSubmit={OnChangeQuery} />
       {loading && <Loader />}
       {movies && <MovieComponents items={movies} />}
       {error && <p>Please try again.</p>}
-      <Outlet />
     </div>
   );
 }

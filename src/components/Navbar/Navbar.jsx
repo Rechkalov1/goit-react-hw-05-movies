@@ -1,16 +1,16 @@
 import NavbarMenu from 'components/NavbarMenu.jsx/NavbarMenu';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Header, Nav } from './NavBar.styled';
 export default function Navbar() {
   return (
-    <nav>
-      <div>
+    <Header>
+      <Nav>
         <div>
           <Link to="/">Logo</Link>
-
-          <NavbarMenu />
         </div>
-      </div>
-    </nav>
+        <NavbarMenu />
+      </Nav>
+    </Header>
   );
 }

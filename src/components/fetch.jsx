@@ -2,9 +2,9 @@ import axios from 'axios';
 const BASE_URL = 'https://api.themoviedb.org/3';
 const MY_KEY = '14bbbaf17264a85a2229a09d03b6c904';
 
-const fetchRequest = async page => {
+const fetchTrending = async () => {
   const response = await axios.get(
-    `${BASE_URL}/trending/all/day?api_key=${MY_KEY}&page=${page}}`
+    `${BASE_URL}/trending/movie/day?api_key=${MY_KEY}`
   );
   console.log(response.data);
   return response.data;
@@ -17,9 +17,9 @@ const fetchMoviesOne = async id => {
   return response.data;
 };
 
-const fetchMovies = async (searchName, currentPage) => {
+const fetchMovies = async (query, page) => {
   const response = await axios.get(
-    `${BASE_URL}/search/movie/?api_key=${MY_KEY}&language=en-US&query=${searchName}&page=${currentPage}&include_adult=false`
+    `${BASE_URL}/search/movie/?api_key=${MY_KEY}&language=en-US&query=${query}&page=${page}&include_adult=false`
   );
   console.log(response.data);
   return response.data;
@@ -36,4 +36,4 @@ const fetchReviews = async (id, currentPage) => {
   console.log(response.data);
   return response.data;
 };
-export { fetchRequest, fetchMovies, fetchMoviesOne, fetchActor, fetchReviews };
+export { fetchTrending, fetchMovies, fetchMoviesOne, fetchActor, fetchReviews };

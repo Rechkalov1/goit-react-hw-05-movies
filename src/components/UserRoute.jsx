@@ -1,10 +1,11 @@
 import Home from '../pages/Home/Home';
 
-import MoviesDetails from '../pages/MoviesDetails/MoviesDetails';
+import Movies from '../pages/Movies/Movies';
 import { Routes, Route } from 'react-router-dom';
 import Navbar from './Navbar/Navbar';
 import NotFoundPage from '../pages/NotFoundPage/NotFoundPage';
-import SingleMoviesPage from '../pages/SingleMoviesPage/SingleMoviesPage';
+
+import { MoviesDetails } from 'pages/MoviesDetails/MoviesDetails';
 
 export function UserRoute() {
   return (
@@ -12,9 +13,15 @@ export function UserRoute() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/Movies" element={<MoviesDetails />} />
-        <Route path="/Movies/:id" element={<SingleMoviesPage />} />
-
+        <Route path="/Movies/:id" element={<MoviesDetails />}>
+          <Route path="cast" element={<div>Привет</div>} />
+          <Route path="reviews" element={<div>Привет</div>} />
+        </Route>
+        <Route path="/Movies" element={<Movies />} />
+        <Route path=":id" element={<MoviesDetails />}>
+          <Route path="cast" element={<div>Привет</div>} />
+          <Route path="reviews" element={<div>Привет</div>} />
+        </Route>
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </div>
