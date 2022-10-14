@@ -1,7 +1,7 @@
-import noImg from '../../../no_img.jpg';
+import img from '../../../no_img.jpg';
 const image_URL = 'https://image.tmdb.org/t/p/w500';
 export default function CastMoviesList({ cast }) {
-  const castMovie = cast.data.cast;
+  const castMovie = cast.cast;
   return (
     <div>
       <ul>
@@ -10,7 +10,7 @@ export default function CastMoviesList({ cast }) {
             {profile_path ? (
               <img src={`${image_URL}${profile_path}`} alt={name} />
             ) : (
-              <img src={noImg} alt={name} />
+              <img src={img} alt="name" />
             )}
 
             <p>{name}</p>

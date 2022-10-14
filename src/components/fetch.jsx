@@ -24,16 +24,16 @@ const fetchMovies = async ({ query = '', page = 1 }) => {
   console.log(response.data);
   return response.data;
 };
-const fetchActor = async ({ id }) => {
+const fetchCast = async ({ id }) => {
   const response = await axios.get(`
   ${BASE_URL}/movie/${id}/credits?api_key=${MY_KEY}&language=en-US`);
   console.log(response.data);
   return response.data;
 };
-const fetchReviews = async (id, currentPage) => {
+const fetchReviews = async ({ id }) => {
   const response = await axios.get(`
-  ${BASE_URL}/movie/${id}/reviews?api_key=${MY_KEY}&language=en-US&page=${currentPage}`);
+  ${BASE_URL}/movie/${id}/reviews?api_key=${MY_KEY}&language=en-US&page=1`);
   console.log(response.data);
   return response.data;
 };
-export { fetchTrending, fetchMovies, fetchMoviesOne, fetchActor, fetchReviews };
+export { fetchTrending, fetchMovies, fetchMoviesOne, fetchCast, fetchReviews };

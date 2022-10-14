@@ -7,6 +7,7 @@ import NotFoundPage from '../pages/NotFoundPage/NotFoundPage';
 
 import { MoviesDetails } from 'pages/MoviesDetails/MoviesDetails';
 import CastMovies from './CastMovies/CastMovies';
+import ReviewsMovies from './ReviewsMovies/ReviewsMovies';
 
 export function UserRoute() {
   return (
@@ -16,7 +17,7 @@ export function UserRoute() {
         <Route path="/Movies" element={<Movies />} />
         <Route path="/Movies/:id" element={<MoviesDetails />}>
           <Route path="cast" element={<CastMovies />} />
-          <Route path="reviews" element={<div>Привет</div>} />
+          <Route path="reviews" element={<ReviewsMovies />} />
         </Route>
 
         <Route path="*" element={<NotFoundPage />} />

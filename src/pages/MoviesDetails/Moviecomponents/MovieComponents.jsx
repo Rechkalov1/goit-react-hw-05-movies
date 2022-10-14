@@ -1,3 +1,4 @@
+import img from '../../../no_img.jpg';
 const MovieComponents = ({ movies }) => {
   const image_URL = 'https://image.tmdb.org/t/p/w500';
   const { title, poster_path, vote_average, overview, genres, release_date } =
@@ -7,7 +8,12 @@ const MovieComponents = ({ movies }) => {
   };
   return (
     <div>
-      <img src={`${image_URL}${poster_path}`} alt={title} />
+      {poster_path ? (
+        <img src={`${image_URL}${poster_path}`} alt={DataTransferItemList} />
+      ) : (
+        <img src={img} alt="no img" />
+      )}
+
       <h2>
         {title} ({release_date.slice(0.4)})
       </h2>
