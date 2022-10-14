@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { fetchTrending } from 'components/fetch';
 import { Loader } from 'shared/Loader/Loader';
 import MoviesList from 'components/MoviesList/MoviesList';
+import Navbar from 'components/Navbar/Navbar';
 
 export default function Home() {
   const [movies, setMovies] = useState([]);
@@ -27,10 +28,11 @@ export default function Home() {
 
   return (
     <>
+      <Navbar />
       {movies.length !== 0 && (
         <div>
           <h2>Trending movies</h2>
-          <MoviesList items={movies} />
+          <MoviesList movies={movies} />
         </div>
       )}
 

@@ -1,9 +1,7 @@
-import React from 'react';
-
-export default function MovieComponents({ items }) {
-  const image_URL = 'https://image.tmdb.org/t/p/w300';
+const MovieComponents = ({ movies }) => {
+  const image_URL = 'https://image.tmdb.org/t/p/w500';
   const { title, poster_path, vote_average, overview, genres, release_date } =
-    items.data;
+    movies;
   const score = () => {
     return Math.round(Number(vote_average) * 10);
   };
@@ -24,4 +22,5 @@ export default function MovieComponents({ items }) {
       </div>
     </div>
   );
-}
+};
+export default MovieComponents;

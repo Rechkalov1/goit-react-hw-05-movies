@@ -9,7 +9,7 @@ const fetchTrending = async () => {
   console.log(response.data);
   return response.data;
 };
-const fetchMoviesOne = async id => {
+const fetchMoviesOne = async ({ id }) => {
   const response = await axios.get(
     `${BASE_URL}/movie/${id}?api_key=${MY_KEY}&language=en-US`
   );
@@ -17,14 +17,14 @@ const fetchMoviesOne = async id => {
   return response.data;
 };
 
-const fetchMovies = async (query, page) => {
+const fetchMovies = async ({ query = '', page = 1 }) => {
   const response = await axios.get(
-    `${BASE_URL}/search/movie/?api_key=${MY_KEY}&language=en-US&query=${query}&page=${page}&include_adult=false`
+    `${BASE_URL}/search/movie?api_key=${MY_KEY}&language=en-US&page=${page}&include_adult=false&query=${query}`
   );
   console.log(response.data);
   return response.data;
 };
-const fetchActor = async id => {
+const fetchActor = async ({ id }) => {
   const response = await axios.get(`
   ${BASE_URL}/movie/${id}/credits?api_key=${MY_KEY}&language=en-US`);
   console.log(response.data);

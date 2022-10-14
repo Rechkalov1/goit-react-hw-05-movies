@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { fetchMoviesOne } from '../../components/fetch';
+import { fetchMovies } from '../../components/fetch';
 import { Loader } from 'shared/Loader/Loader';
-import MovieComponents from '../MoviesDetails/Moviecomponents/MovieComponents';
+
 import Search from 'components/Search/Search';
+import Navbar from 'components/Navbar/Navbar';
+import MoviesList from 'components/MoviesList/MoviesList';
 
 export default function Movies() {
   const [movies, setMovies] = useState([]);
@@ -15,7 +17,7 @@ export default function Movies() {
 
   const OnChangeQuery = query => {
     setSearchParams({ query: query });
-    setMovies({});
+    setMovies([]);
   };
 
   useEffect(() => {
@@ -25,7 +27,7 @@ export default function Movies() {
       }
       setLoading(true);
       try {
-        const data = await fetchMoviesOne({ query });
+        const data = await fetchMovies({ query });
         setMovies(data);
       } catch (error) {
         setError(error);
@@ -38,9 +40,10 @@ export default function Movies() {
 
   return (
     <div>
+      <Navbar />
       <Search onSubmit={OnChangeQuery} />
       {loading && <Loader />}
-      {movies && <MovieComponents items={movies} />}
+      {movies.length !== 0 && <MoviesList movies={movies} />}
       {error && <p>Please try again.</p>}
     </div>
   );

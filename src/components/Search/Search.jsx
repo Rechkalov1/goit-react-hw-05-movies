@@ -1,33 +1,37 @@
 import { toast } from 'react-toastify';
 import { Header, Form, Input, Button } from './Search.styled';
-import React from 'react';
+
 import { useState } from 'react';
 
 export default function Search({ onSubmit }) {
-  const [searchImages, setSearchImages] = useState('');
+  const [searchQuery, setSearchQuery] = useState('');
   const handleNameChange = e => {
     const { value } = e.target;
-    setSearchImages(value);
+    setSearchQuery(value);
   };
   const handleSubmit = e => {
     e.preventDefault();
-    if (searchImages.trim() === '') {
+    if (searchQuery.trim() === '') {
       toast.warn('Enter a valid name');
-      setSearchImages('');
+      setSearchQuery('');
     }
-    onSubmit(searchImages);
+    onSubmit(searchQuery);
+    resetForm();
+  };
+  const resetForm = () => {
+    setSearchQuery('');
   };
   return (
     <Header>
       <Form onSubmit={handleSubmit}>
         <Input
           onChange={handleNameChange}
-          name="searchImages"
+          name="searchQuery"
           type="text"
           autoComplete="off"
           autoFocus
-          placeholder="Search images and photos"
-          value={searchImages}
+          placeholder="Search Movies"
+          value={searchQuery}
         />
         <Button type="submit">
           <span>Search</span>
