@@ -5,7 +5,7 @@ import { Loader } from 'shared/Loader/Loader';
 import MovieComponents from './Moviecomponents/MovieComponents';
 import PatchToInfoFilms from '../../components/pathToInfo/PatchToInfoFilms';
 import Navbar from 'components/Navbar/Navbar';
-export function MoviesDetails() {
+export default function MoviesDetails() {
   const [movies, setMovies] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);

@@ -1,4 +1,5 @@
 import img from '../../../no_img.jpg';
+import { Thumb, ThumbText, ImgPoster } from './MovieComponents.styled';
 const MovieComponents = ({ movies }) => {
   const image_URL = 'https://image.tmdb.org/t/p/w500';
   const { title, poster_path, vote_average, overview, genres, release_date } =
@@ -7,26 +8,32 @@ const MovieComponents = ({ movies }) => {
     return Math.round(Number(vote_average) * 10);
   };
   return (
-    <div>
-      {poster_path ? (
-        <img src={`${image_URL}${poster_path}`} alt={DataTransferItemList} />
-      ) : (
-        <img src={img} alt="no img" />
-      )}
-
-      <h2>
-        {title} ({release_date.slice(0.4)})
-      </h2>
-      <p>User score:{score()}</p>
-      <h3>Overview</h3>
-      <p>{overview}</p>
-      <h3>Genres</h3>
+    <Thumb>
       <div>
-        {genres.map(({ name, id }) => (
-          <p key={id}>{name}</p>
-        ))}
+        {poster_path ? (
+          <ImgPoster
+            src={`${image_URL}${poster_path}`}
+            alt={DataTransferItemList}
+          />
+        ) : (
+          <ImgPoster src={img} alt="no img" />
+        )}
       </div>
-    </div>
+      <ThumbText>
+        <h2>
+          {title} ({release_date.slice(0.4)})
+        </h2>
+        <p>User score:{score()}</p>
+        <h3>Overview</h3>
+        <p>{overview}</p>
+        <h3>Genres</h3>
+        <div>
+          {genres.map(({ name, id }) => (
+            <p key={id}>{name}</p>
+          ))}
+        </div>
+      </ThumbText>
+    </Thumb>
   );
 };
 export default MovieComponents;

@@ -3,13 +3,9 @@ export const Header = styled.header`
   position: relative;
   width: 100%;
   height: 30px;
-  background-color: blue;
 `;
 export const Form = styled.form`
-  position: absolute;
   padding-top: 3px;
-  transform: translate(-50%, 0%);
-  left: 50%;
 `;
 export const Input = styled.input`
   height: 20px;
