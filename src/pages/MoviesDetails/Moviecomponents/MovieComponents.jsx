@@ -4,6 +4,7 @@ const MovieComponents = ({ movies }) => {
   const image_URL = 'https://image.tmdb.org/t/p/w500';
   const { title, poster_path, vote_average, overview, genres, release_date } =
     movies;
+  const year = new Date(release_date);
   const score = () => {
     return Math.round(Number(vote_average) * 10);
   };
@@ -21,7 +22,7 @@ const MovieComponents = ({ movies }) => {
       </div>
       <ThumbText>
         <h2>
-          {title} ({release_date.slice(0.4)})
+          {title} ({year.getFullYear()})
         </h2>
         <p>User score:{score()}</p>
         <h3>Overview</h3>
