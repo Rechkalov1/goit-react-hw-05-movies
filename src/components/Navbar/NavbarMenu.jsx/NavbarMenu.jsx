@@ -19,7 +19,9 @@ export default function NavbarMenu() {
   const elements = itemsMenu.map(({ id, to, text }) => {
     return (
       <Li key={id}>
-        <NavItem to={to}>{text}</NavItem>
+        <NavItem to={to} end>
+          {text}
+        </NavItem>
       </Li>
     );
   });
