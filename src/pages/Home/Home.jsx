@@ -31,7 +31,7 @@ export default function Home() {
       <Navbar />
       {movies.length !== 0 && (
         <div>
-          <h2>Trending movies</h2>
+          <h1>Trending Today</h1>
           <MoviesList movies={movies} />
         </div>
       )}

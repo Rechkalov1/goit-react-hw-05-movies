@@ -1,7 +1,6 @@
-import { NavLink } from 'react-router-dom';
 import React from 'react';
 import { nanoid } from 'nanoid';
-import { Ul, Li } from './NavbarMenu.styled';
+import { Ul, Li, NavItem } from './NavbarMenu.styled';
 
 const itemsMenu = [
   {
@@ -20,7 +19,7 @@ export default function NavbarMenu() {
   const elements = itemsMenu.map(({ id, to, text }) => {
     return (
       <Li key={id}>
-        <NavLink to={to}>{text}</NavLink>
+        <NavItem to={to}>{text}</NavItem>
       </Li>
     );
   });
